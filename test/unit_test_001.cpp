@@ -39,7 +39,13 @@ unittest(test_constructor)
 {
   fprintf(stderr, "MAP2COLOUR_LIB_VERSION: %s\n", (char *) MAP2COLOUR_LIB_VERSION);
 
+  map2colour mc;
+
+  float values = { 1, 2, 3, 4, 5, 6, 7 };
+  assertTrue(mc.begin(values));
+
 }
+
 
 
 unittest_main()
