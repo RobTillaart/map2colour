@@ -1,5 +1,5 @@
 //
-//    FILE: demo_map2colour.ino
+//    FILE: map2colour_performance.ino
 //  AUTHOR: Rob Tillaart
 // VERSION: 0.1.0
 // PURPOSE: map2colour demo
@@ -24,11 +24,11 @@ void setup()
 
   for (float i = 0; i < 1024; i += 10)
   {
-    //    uint32_t start = micros();
+    uint32_t start = micros();
     uint32_t rgb = mc.map2RGB(i);
-    //    uint32_t stop = micros();
-    //    Serial.print(stop - start);   //  120 - 172 us
-    //    Serial.print("\t");
+    uint32_t stop = micros();
+    Serial.print(stop - start);   //  120 - 172 us
+    Serial.print("\t");
     Serial.print(i);
     Serial.print("\t");
     Serial.println(rgb, HEX);
@@ -40,12 +40,6 @@ void setup()
 
 void loop()
 {
-  int x = analogRead(0);
-  uint32_t rgb = mc.map2RGB(x);
-  Serial.print(x);
-  Serial.print("\t");
-  Serial.println(rgb, HEX);
-  delay(100);
 }
 
 
