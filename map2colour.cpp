@@ -17,9 +17,21 @@ map2colour::map2colour()
 }
 
 
-bool map2colour::begin(float * values)
+bool map2colour::begin(float * values, uint32_t * colourMap)
 {
   _values = values;
+  if (colourMap != NULL)
+  {
+    for (int i = 0; i < 7; i++)
+    {
+      uint32_t val = colourMap[i];
+      _Blue[i]  = val & 0xFF;
+      val >>= 8;
+      _Green[i] = val & 0xFF;
+      val >>= 8;
+      _Red[i]   = val & 0xFF;
+    }
+  }
   return true;
 }
 
