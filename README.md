@@ -86,10 +86,10 @@ See examples.
 ## Future
 
 - update documentation
-- improve performance?
+- investigate performance
+- **uint16_t map2_565(float value)** 
+  - wrapper around RGB uses less memory and is expected slower)
 - add examples
-
-**0.2.0** thoughts
 - seven "fixed" points is that flex enough?
-- **uint32_t map2565(float value)** (wrapper?)
+- PROGMEM for default array
 

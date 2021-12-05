@@ -77,6 +77,30 @@ unittest(test_constructor_II)
 
 
 
+unittest(test_constants)
+{
+  fprintf(stderr, "MAP2COLOUR_LIB_VERSION: %s\n", (char *) MAP2COLOUR_LIB_VERSION);
+
+  asserEqual(M2C_BLACK   ,0x00000000);
+  asserEqual(M2C_SILVER  ,0x00C0C0C0);
+  asserEqual(M2C_GRAY    ,0x00808080);
+  asserEqual(M2C_WHITE   ,0x00FFFFFF);
+  asserEqual(M2C_MAROON  ,0x00800000);
+  asserEqual(M2C_RED     ,0x00FF0000);
+  asserEqual(M2C_PURPLE  ,0x00800080);
+  asserEqual(M2C_FUCHSIA ,0x00FF00FF);
+  asserEqual(M2C_GREEN   ,0x00008000);
+  asserEqual(M2C_LIME    ,0x000FF000);
+  asserEqual(M2C_OLIVE   ,0x00808000);
+  asserEqual(M2C_YELLOW  ,0x00FFFF00);
+  asserEqual(M2C_NAVY    ,0x00000080);
+  asserEqual(M2C_BLUE    ,0x000000FF);
+  asserEqual(M2C_TEAL    ,0x00008080);
+  asserEqual(M2C_AQUA    ,0x0000FFFF);
+}
+
+
+
 unittest_main()
 
 
