@@ -53,7 +53,10 @@ Note: the arrays passed to **begin()** should both have at least 7 elements!
 The colour array can be filled with decimal or HEX values or predefined colours can be used. See below.
 
 
-## predefined colours
+## Predefined colours
+
+Colours have the pattern **0x00RRGGBB**.
+
 
 | define      | value      |
 |:------------|:----------:|
