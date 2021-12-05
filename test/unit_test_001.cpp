@@ -64,7 +64,7 @@ unittest(test_constructor_II)
   {
     M2C_WHITE, M2C_BLACK, M2C_FUCHSIA, M2C_OLIVE, M2C_NAVY, M2C_GREEN, M2C_YELLOW
   };
-  assertTrue(mc.begin(values, colours);
+  assertTrue(mc.begin(values, colours));
 
   assertEqual(M2C_WHITE,   mc.map2RGB(1));
   assertEqual(M2C_BLACK,   mc.map2RGB(2));

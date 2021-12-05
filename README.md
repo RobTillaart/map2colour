@@ -88,12 +88,8 @@ See examples.
 - update documentation
 - improve performance?
 - add examples
-  - double entries in values table
-    - to make range smaller RED YELLOW GREEN
-
-
 
 **0.2.0** thoughts
 - seven "fixed" points is that flex enough?
-
+- **uint32_t map2565(float value)** (wrapper?)
 
