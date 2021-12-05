@@ -91,7 +91,6 @@ See examples.
 
 - update documentation
 - investigate performance
-
 - **void     adjustColour(uint8_t index, uint32_t RGB)**
 - **uint32_t dumpColourMap()** ??
 - add examples

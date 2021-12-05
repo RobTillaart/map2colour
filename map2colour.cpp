@@ -63,7 +63,7 @@ uint32_t map2colour::map2RGB(float value)
 }
 
 
-uint32_t map2colour::map2_565(float value)
+uint16_t map2colour::map2_565(float value)
 {
   uint32_t RGB = map2RGB(value);
   uint16_t colour = 0x0000;
