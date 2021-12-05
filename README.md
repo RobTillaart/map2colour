@@ -86,11 +86,11 @@ See examples.
 ## Future
 
 - update documentation
-- add unit tests
+- improve performance?
 - add examples
   - double entries in values table
     - to make range smaller RED YELLOW GREEN
-- improve performance?
+
 
 
 **0.2.0** thoughts
