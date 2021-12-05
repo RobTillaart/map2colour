@@ -13,15 +13,15 @@ Arduino library for mapping a float to colour spectrum
 
 ## Description
 
-The map2colour library is used to make map a reading from a sensor, e.g. temperature or pressure, 
+The map2colour library is used to make map a reading from a sensor, e.g. temperature or pressure,
 to a colour in the RGB spectrum. This can be used to colour an element on a graphical display, drive an RGB LED etc.
 
-The initial release uses 7 floats values that describe the range being mapped. 
-These are passed to the library with **begin()**. 
+The initial release uses 7 floats values that describe the range being mapped.
+These are passed to the library with **begin()**.
 These 7 floats must be in ascending order and are mapped default on the following colour array.
 
 ```cpp
-uint32_t colours[] = 
+uint32_t colours[] =
 {
   // BLACK        RED         YELLOW      GREEN      AQUA        BLUE       WHITE
   0x00000000, 0x00FF0000, 0x00FFFF00, 0x0000FF00, 0x0000FFFF, 0x000000FF, 0x00FFFFFF
@@ -30,12 +30,12 @@ uint32_t colours[] =
 
 New values will be linear interpolated between two points when needed.
 
-Assume you initialize a float array 
+Assume you initialize a float array
 ```cpp
 float tempArray[] = { -10, -10, 5, 15, 30, 60, 125 };  // note the double -10
 ```
-A temperature of 0°C will be mapped between the 2nd and 3rd element so 
-between RED and YELLOW.  
+A temperature of 0°C will be mapped between the 2nd and 3rd element so
+between RED and YELLOW.
 A temperature between 60°C and 125°C will be mapped between BLUE and WHITE.
 
 
@@ -43,10 +43,11 @@ A temperature between 60°C and 125°C will be mapped between BLUE and WHITE.
 
 - **map2colour()** constructor.
 - **bool begin(float \* values, uint32_t \* colourMap = NULL)** load the array with **7** boundary values and
-the associated array of **7** colours packed in uint32_t **0x00RRGGBB**. 
+the associated array of **7** colours packed in uint32_t **0x00RRGGBB**.
 If the colour array is not given the last used (default) colour array is used.
 **begin()** can be called multiple times to change the mapping.
 - **uint32_t map2RGB(float value)** returns RGB colour packed in an uint32_t **0x00RRGGBB**.
+- **uint16_t map2_565(float value)** often used 16 bit colour format. Currently a wrapper around **map2RGB**.
 
 Note: the arrays passed to **begin()** should both have at least 7 elements!
 
@@ -90,9 +91,11 @@ See examples.
 
 - update documentation
 - investigate performance
-- **uint16_t map2_565(float value)** 
-  - wrapper around RGB uses less memory and is expected slower)
+
+- **void     adjustColour(uint8_t index, uint32_t RGB)**
+- **uint32_t dumpColourMap()** ??
 - add examples
 - seven "fixed" points is that flex enough?
 - PROGMEM for default array
+
 
