@@ -23,7 +23,7 @@ These 7 floats must be in ascending order and are mapped default on the followin
 ```cpp
 uint32_t colours[] = 
 {
-  // BLACK        RED         YELLOW      GREEN       ??         BLUE       WHITE
+  // BLACK        RED         YELLOW      GREEN      AQUA        BLUE       WHITE
   0x00000000, 0x00FF0000, 0x00FFFF00, 0x0000FF00, 0x0000FFFF, 0x000000FF, 0x00FFFFFF
 }
 ```
@@ -34,8 +34,8 @@ Assume you initialize a float array
 ```cpp
 float tempArray[] = { -10, -10, 5, 15, 30, 60, 125 };  // note the double -10
 ```
-A temperature of 0°C will be mapped between the 2nd and 3rd element so somewhere 
-between RED and YELLOW. 
+A temperature of 0°C will be mapped between the 2nd and 3rd element so 
+between RED and YELLOW.  
 A temperature between 60°C and 125°C will be mapped between BLUE and WHITE.
 
 
@@ -75,7 +75,7 @@ The colour array can be filled with decimal or HEX values or predefined colours 
 | M2C_AQUA    | 0x0000FFFF |
 
 
-More colour definitions can be found https://www.w3.org/wiki/CSS/Properties/color/keywords
+More colour definitions can be found e.g. https://www.w3.org/wiki/CSS/Properties/color/keywords
 
 
 ## Operation
