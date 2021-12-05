@@ -44,13 +44,13 @@ unittest(test_constructor_I)
   float values[7] = { 1, 2, 3, 4, 5, 6, 7 };
   assertTrue(mc.begin(values));
 
-  assertEqual(0x00000000, map2RGB(1));
-  assertEqual(0x00FF0000, map2RGB(2));
-  assertEqual(0x00FFFF00, map2RGB(3));
-  assertEqual(0x0000FF00, map2RGB(4));
-  assertEqual(0x0000FFFF, map2RGB(5));
-  assertEqual(0x000000FF, map2RGB(6));
-  assertEqual(0x00FFFFFF, map2RGB(7));
+  assertEqual(0x00000000, mc.map2RGB(1));
+  assertEqual(0x00FF0000, mc.map2RGB(2));
+  assertEqual(0x00FFFF00, mc.map2RGB(3));
+  assertEqual(0x0000FF00, mc.map2RGB(4));
+  assertEqual(0x0000FFFF, mc.map2RGB(5));
+  assertEqual(0x000000FF, mc.map2RGB(6));
+  assertEqual(0x00FFFFFF, mc.map2RGB(7));
 }
 
 unittest(test_constructor_II)
@@ -66,13 +66,13 @@ unittest(test_constructor_II)
   };
   assertTrue(mc.begin(values));
 
-  assertEqual(M2C_WHITE,   map2RGB(1));
-  assertEqual(M2C_BLACK,   map2RGB(2));
-  assertEqual(M2C_FUCHSIA, map2RGB(3));
-  assertEqual(M2C_OLIVE,   map2RGB(4));
-  assertEqual(M2C_NAVY,    map2RGB(5));
-  assertEqual(M2C_GREEN,   map2RGB(6));
-  assertEqual(M2C_YELLOW,  map2RGB(7));
+  assertEqual(M2C_WHITE,   mc.map2RGB(1));
+  assertEqual(M2C_BLACK,   mc.map2RGB(2));
+  assertEqual(M2C_FUCHSIA, mc.map2RGB(3));
+  assertEqual(M2C_OLIVE,   mc.map2RGB(4));
+  assertEqual(M2C_NAVY,    mc.map2RGB(5));
+  assertEqual(M2C_GREEN,   mc.map2RGB(6));
+  assertEqual(M2C_YELLOW,  mc.map2RGB(7));
 }
 
 
