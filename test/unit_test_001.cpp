@@ -60,7 +60,7 @@ unittest(test_constructor_II)
   map2colour mc;
 
   float values[7] = { 1, 2, 3, 4, 5, 6, 7 };
-  uint32_t colours = 
+  uint32_t colours[7] = 
   {
     M2C_WHITE, M2C_BLACK, M2C_FUCHSIA, M2C_OLIVE, M2C_NAVY, M2C_GREEN, M2C_YELLOW
   };
