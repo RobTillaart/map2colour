@@ -41,7 +41,7 @@ unittest(test_constructor)
 
   map2colour mc;
 
-  float values = { 1, 2, 3, 4, 5, 6, 7 };
+  float values[7] = { 1, 2, 3, 4, 5, 6, 7 };
   assertTrue(mc.begin(values));
 
 }
