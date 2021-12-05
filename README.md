@@ -46,7 +46,8 @@ A temperature between 60°C and 125°C will be mapped between BLUE and WHITE.
 the associated array of **7** colours packed in uint32_t **0x00RRGGBB**.
 If the colour array is not given the last used (default) colour array is used.
 **begin()** can be called multiple times to change the mapping.
-- **uint32_t map2RGB(float value)** returns RGB colour packed in an uint32_t **0x00RRGGBB**.
+- **uint32_t map2RGB(float value)** returns RGB colour packed in an uint32_t **0x00RRGGBB**.  
+If the value is out of range of the original values array, the value is always mapped upon the first colour.
 - **uint16_t map2_565(float value)** often used 16 bit colour format. Currently a wrapper around **map2RGB**.
 
 Note: the arrays passed to **begin()** should both have at least 7 elements!
@@ -87,14 +88,31 @@ More colour definitions can be found e.g. https://www.w3.org/wiki/CSS/Properties
 See examples.
 
 
+## Performance
+
+A small indicative table with some performance figures lib version 0.1.2) 
+
+
+| function call          | time us UNO |
+|:-----------------------|------------:|
+| begin(values)          | 4           |
+| begin(values, colours) | 12          |
+| map2RGB(value)         | 124 - 148   |
+| map2_565(value)        | 124 - 160   |
+
+
 ## Future
 
 - update documentation
-- investigate performance
-- **void     adjustColour(uint8_t index, uint32_t RGB)**
-- **uint32_t dumpColourMap()** ??
-- add examples
+- investigate ESP32 
+  - behaviour 
+  - performance
 - seven "fixed" points is that flex enough?
+
+**could**
+- **void     adjustColour(uint8_t index, uint32_t RGB)**
+- **uint32_t dumpColourMap()**
+
 - PROGMEM for default array
 
 

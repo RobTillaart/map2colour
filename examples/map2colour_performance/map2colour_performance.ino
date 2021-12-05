@@ -14,7 +14,12 @@ map2colour mc;
 
 // should be in increasing order; and 7 elements
 float values[7] = { 0, 32, 64, 128, 256, 512, 1024 };
+uint32_t colours[7] =
+{
+  M2C_RED,M2C_RED,M2C_YELLOW,M2C_LIME,M2C_YELLOW,M2C_RED,M2C_RED
+};
 
+uint32_t start, stop;
 
 void setup()
 {
@@ -22,19 +27,49 @@ void setup()
   Serial.println(__FILE__);
 
   // use the default colour map.
+  start = micros();
   mc.begin(values);
+  stop = micros();
+  Serial.println(stop - start);
+  delay(10);
+
+  // use the default colour map.
+  start = micros();
+  mc.begin(values, colours);
+  stop = micros();
+  Serial.println(stop - start);
+  Serial.println();
+  delay(1000);
+
+
+  for (float i = 0; i < 1024; i += 10)
+  {
+    start = micros();
+    uint32_t rgb = mc.map2RGB(i);
+    stop = micros();
+    Serial.print(stop - start);   //  120 - 172 us
+    Serial.print("\t");
+    Serial.print(i);
+    Serial.print("\t");
+    Serial.println(rgb, HEX);
+    delay(10);
+  }
+  Serial.println();
+  delay(1000);
 
   for (float i = 0; i < 1024; i += 10)
   {
     uint32_t start = micros();
-    uint32_t rgb = mc.map2RGB(i);
+    uint32_t rgb = mc.map2_565(i);
     uint32_t stop = micros();
     Serial.print(stop - start);   //  120 - 172 us
     Serial.print("\t");
     Serial.print(i);
     Serial.print("\t");
     Serial.println(rgb, HEX);
+    delay(10);
   }
+  Serial.println();
 
   Serial.println("done...");
 }
