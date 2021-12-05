@@ -1,13 +1,14 @@
 //
 //    FILE: map2colour.cpp
 //  AUTHOR: Rob Tillaart
-// VERSION: 0.1.0
+// VERSION: 0.1.1
 // PURPOSE: Arduino library for mapping a float to colour spectrum
 //     URL: https://github.com/RobTillaart/map2colour
 //
 //  HISTORY:
 //  0.1.0  2021-12-04  initial version
-
+//  0.1.1  2021-12-05  add user defined colour-map
+//                     add unit tests, update readme.md
 
 #include "map2colour.h"
 
