@@ -104,20 +104,22 @@ This number is hardcoded (now) and that might change
 A small indicative table with some performance figures lib version 0.1.2) 
 
 
-| function call          | time us UNO |
-|:-----------------------|------------:|
-| begin(values)          | 4           |
-| begin(values, colours) | 12          |
-| map2RGB(value)         | 124 - 152   |
-| map2_565(value)        | 124 - 168   |
+| function call          | time us UNO | time us ESP32 |
+|:-----------------------|------------:|--------------:|
+| begin(values)          | 4           | 4             |
+| begin(values, colours) | 12          | 4             |
+| map2RGB(value)         | 124 - 152   | 2 - 4         |
+| map2_565(value)        | 124 - 168   | 2 - 4         |
+
+
+Note: UNO at 16 MHz, ESP32 at 240 MHz
 
 
 ## Future
 
 - update documentation
 - investigate ESP32 
-  - behaviour 
-  - performance
+  - behaviour
 - seven "fixed" points is that flex enough?
 
 
