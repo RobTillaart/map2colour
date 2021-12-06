@@ -14,7 +14,7 @@ Arduino library for mapping a float to colour spectrum.
 ## Description
 
 The map2colour library is used to make map a reading from a sensor, e.g. temperature or pressure,
-to a colour in the RGB spectrum. This can be used to colour an element on a graphical display, drive an RGB LED etc.
+to a colour in the RGB spectrum. This can be used to colour an element on a graphical display, drive an RGB LED, or even a LED string etc.
 
 The initial release uses 7 floats values that describe the range being mapped.
 These are passed to the library with **begin()**.
@@ -126,6 +126,8 @@ Note: UNO at 16 MHz, ESP32 at 240 MHz
 #### prio
 
 - optimize mapping 
+  - less compares
+  - replace division by multiply (cache 6 floats = 24 bytes RAM)
 
 
 #### development ?
