@@ -10,6 +10,7 @@
 #include "Arduino.h"
 #include "map2colour.h"
 
+
 map2colour mc;
 
 // should be in increasing order; and 7 elements
@@ -21,10 +22,12 @@ uint32_t colours[7] =
 
 uint32_t start, stop;
 
+
 void setup()
 {
   Serial.begin(115200);
   Serial.println(__FILE__);
+
 
   Serial.println("begin()");
   delay(10);
@@ -35,6 +38,7 @@ void setup()
   Serial.println(stop - start);
   delay(10);
 
+
   // use the default colour map.
   start = micros();
   mc.begin(values, colours);
@@ -42,6 +46,7 @@ void setup()
   Serial.println(stop - start);
   Serial.println();
   delay(1000);
+
 
   Serial.println("map2RGB()");
   delay(10);
@@ -60,6 +65,7 @@ void setup()
   Serial.println();
   delay(1000);
 
+
   Serial.println("map2_565()");
   delay(10);
   for (float i = 0; i < 1024; i += 10)
@@ -75,6 +81,7 @@ void setup()
     delay(10);
   }
   Serial.println();
+
 
   Serial.println("done...");
 }

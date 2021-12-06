@@ -10,6 +10,7 @@
 #include "Arduino.h"
 #include "map2colour.h"
 
+
 map2colour mc;
 
 // should be in increasing order
@@ -32,8 +33,7 @@ void setup()
     Serial.print("\t");
     Serial.println(rgb, HEX);
   }
-
-  Serial.println("done...");
+  Serial.println();
 }
 
 

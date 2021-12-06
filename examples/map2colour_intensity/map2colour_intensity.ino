@@ -10,8 +10,10 @@
 // demo simulates a temperature mapped upon 1 colour intensity.
 // low temperature = no colour, higher is more intense RED
 
+
 #include "Arduino.h"
 #include "map2colour.h"
+
 
 map2colour mct;
 
@@ -37,7 +39,6 @@ void setup()
     Serial.print("\t");
     Serial.println(rgb, HEX);
   }
-  Serial.println();
   Serial.println();
 }
 

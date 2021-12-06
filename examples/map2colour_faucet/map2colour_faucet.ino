@@ -10,8 +10,10 @@
 // demo simulates a temperature of a faucet mapped upon 2 colours.
 // blue = cold, black is middle, red is hot
 
+
 #include "Arduino.h"
 #include "map2colour.h"
+
 
 map2colour mct;
 
@@ -37,7 +39,6 @@ void setup()
     Serial.print("\t");
     Serial.println(rgb, HEX);
   }
-  Serial.println();
   Serial.println();
 }
 

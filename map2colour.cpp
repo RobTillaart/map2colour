@@ -9,7 +9,7 @@
 //  0.1.0  2021-12-04  initial version.
 //  0.1.1  2021-12-05  add user defined colour-map.
 //                     add unit tests, update readme.md.
-//  0.1.2  2021-12-xx  add map2_565(), 
+//  0.1.2  2021-12-06  add map2_565(), 
 //                     add + improve examples.
 //                     fix value > upper bug
 //   
