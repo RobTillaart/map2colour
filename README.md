@@ -93,7 +93,10 @@ More colour definitions can be found e.g. https://www.w3.org/wiki/CSS/Properties
 
 See examples.
 
-By changing the colour map one can get different effects.
+By changing the colour map one can get different effects. The minimum is an intensity effects
+going from black towards a certain colour at max intensity. 
+More complex colour schemes are possible, up to 7 different colours. 
+This number is hardcoded (now) and that might change
 
 
 ## Performance
@@ -117,11 +120,15 @@ A small indicative table with some performance figures lib version 0.1.2)
   - performance
 - seven "fixed" points is that flex enough?
 
-**0.1.3**
+
+#### prio
+
 - optimize mapping 
 
-**could for developing**
-- **void     adjustColour(uint8_t index, uint32_t RGB)** // single colour adjust
+
+#### development ?
+
+- **void adjustColour(uint8_t index, uint32_t RGB)**    // single colour adjust
 - **uint32_t dumpColourMap()** 
 
 - PROGMEM for default array?
