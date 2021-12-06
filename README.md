@@ -8,7 +8,7 @@
 
 # map2colour
 
-Arduino library for mapping a float to colour spectrum
+Arduino library for mapping a float to colour spectrum.
 
 
 ## Description
@@ -38,13 +38,19 @@ A temperature of 0°C will be mapped between the 2nd and 3rd element so
 between RED and YELLOW.
 A temperature between 60°C and 125°C will be mapped between BLUE and WHITE.
 
+**begin()** also allows one to overrule the colours array with a colour array of your choice.
+Adjusting the colour array allows one to use a "full spectrum" like the default or only 
+interpolate between two colours. Note the library has several colours predefined as constant
+to make the colour table (and the code) more readable. If colours are missing please make a 
+PullRequest (preferred) or file an issue. 
+
 
 ## Interface
 
 - **map2colour()** constructor.
-- **bool begin(float \* values, uint32_t \* colourMap = NULL)** load the array with **7** boundary values and
-the associated array of **7** colours packed in uint32_t **0x00RRGGBB**.
-If the colour array is not given the last used (default) colour array is used.
+- **bool begin(float \* values, uint32_t \* colourMap = NULL)** load the array with **7** 
+boundary values and the associated array of **7** colours packed in uint32_t **0x00RRGGBB**.
+If the colour array is not given the last given (or the default) colour array is used.
 **begin()** can be called multiple times to change the mapping.
 - **uint32_t map2RGB(float value)** returns RGB colour packed in an uint32_t **0x00RRGGBB**.  
 If the value is out of range of the original values array, the value is always mapped upon the first colour.
@@ -87,6 +93,8 @@ More colour definitions can be found e.g. https://www.w3.org/wiki/CSS/Properties
 
 See examples.
 
+By changing the colour map one can get different effects.
+
 
 ## Performance
 
@@ -97,8 +105,8 @@ A small indicative table with some performance figures lib version 0.1.2)
 |:-----------------------|------------:|
 | begin(values)          | 4           |
 | begin(values, colours) | 12          |
-| map2RGB(value)         | 124 - 148   |
-| map2_565(value)        | 124 - 160   |
+| map2RGB(value)         | 124 - 152   |
+| map2_565(value)        | 124 - 168   |
 
 
 ## Future
@@ -109,10 +117,14 @@ A small indicative table with some performance figures lib version 0.1.2)
   - performance
 - seven "fixed" points is that flex enough?
 
-**could**
-- **void     adjustColour(uint8_t index, uint32_t RGB)**
-- **uint32_t dumpColourMap()**
+**0.1.3**
+- optimize mapping 
 
-- PROGMEM for default array
+**could for developing**
+- **void     adjustColour(uint8_t index, uint32_t RGB)** // single colour adjust
+- **uint32_t dumpColourMap()** 
+
+- PROGMEM for default array?
+
 
 

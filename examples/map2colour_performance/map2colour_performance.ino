@@ -16,7 +16,7 @@ map2colour mc;
 float values[7] = { 0, 32, 64, 128, 256, 512, 1024 };
 uint32_t colours[7] =
 {
-  M2C_RED,M2C_RED,M2C_YELLOW,M2C_LIME,M2C_YELLOW,M2C_RED,M2C_RED
+  M2C_RED, M2C_RED, M2C_YELLOW, M2C_LIME, M2C_YELLOW, M2C_RED, M2C_RED
 };
 
 uint32_t start, stop;
@@ -26,6 +26,8 @@ void setup()
   Serial.begin(115200);
   Serial.println(__FILE__);
 
+  Serial.println("begin()");
+  delay(10);
   // use the default colour map.
   start = micros();
   mc.begin(values);
@@ -41,7 +43,8 @@ void setup()
   Serial.println();
   delay(1000);
 
-
+  Serial.println("map2RGB()");
+  delay(10);
   for (float i = 0; i < 1024; i += 10)
   {
     start = micros();
@@ -57,6 +60,8 @@ void setup()
   Serial.println();
   delay(1000);
 
+  Serial.println("map2_565()");
+  delay(10);
   for (float i = 0; i < 1024; i += 10)
   {
     uint32_t start = micros();
