@@ -48,6 +48,7 @@ PullRequest (preferred) or file an issue.
 ## Interface
 
 - **map2colour()** constructor.
+- **map2colourFast()** constructor, (larger code base, more RAM and faster)
 - **bool begin(float \* values, uint32_t \* colourMap = NULL)** load the array with **7** 
 boundary values and the associated array of **7** colours packed in uint32_t **0x00RRGGBB**.
 If the colour array is not given the last given (or the default) colour array is used.
@@ -93,18 +94,19 @@ More colour definitions can be found e.g. https://www.w3.org/wiki/CSS/Properties
 
 See examples.
 
-By changing the colour map one can get different effects. The minimum is an intensity effects
-going from black towards a certain colour at max intensity. 
+By changing the colour map one can get different effects. 
+The minimum to implement is an intensity effect going from black towards a colour at max intensity. 
 More complex colour schemes are possible, up to 7 different colours. 
-This number is hardcoded (now) and that might change
+This number is hardcoded (for now) and that might change in the future.
 
 
 ## Performance
 
-measured with performance example.
+Indicative performance figures measured with performance example.
+Performance depends on colours chosen, platform etc.
 
 
-#### indicative performance figures lib version 0.1.2
+#### version 0.1.2
 
 | function call          | time us UNO | time us ESP32 |
 |:-----------------------|------------:|--------------:|
@@ -114,7 +116,7 @@ measured with performance example.
 | map2_565(value)        | 124 - 168   | 2 - 4         |
 
 
-#### indicative performance figures lib version 0.1.3
+#### version 0.1.3
 
 | function call          | time us UNO | time us ESP32 |
 |:-----------------------|------------:|--------------:|
@@ -124,22 +126,31 @@ measured with performance example.
 | map2_565(value)        | 68 - 140    | 2 - 3         |
 
 
+#### version 0.1.4
+
+| function call          | time us UNO | time us ESP32 |
+|:-----------------------|------------:|--------------:|
+| begin(values)          | 220         | 15            |
+| begin(values, colours) | 232         | 6             |
+| map2RGB(value)         | 40 - 104    | 1 - 2         |
+| map2_565(value)        | 44 - 112    | 1 - 2         |
+
+
 Note: UNO at 16 MHz, ESP32 at 240 MHz
 
 
-#### optimization
+#### optimization 0.1.4
 
 One performance optimization (trade memory for speed) is replacing the float division 
 in map2RGB by a multiplication. 
-This requires 24 bytes RAM to hold the 6 factors and calculation of the dividers in begin().
-The latter implies more PROGMEM. 
-To be implemented as a derived class?
+This requires 24 bytes RAM to hold the 6 factors and ~100 bytes of PROGMEM for the calculation of the dividers in begin(). 
+This optimization is implemented as a derived class **map2colourFast** in version 0.1.4.
+The map2RGB is about 40 % faster compared to the original 0.1.2.
 
 
 ## Future
 
 - update documentation
-- derived class optimization?
 
 
 #### development ?
