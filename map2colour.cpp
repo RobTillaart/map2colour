@@ -58,13 +58,24 @@ uint32_t map2colour::map2RGB(float value)
     {
       //  search the interval
       while ((index < 7) && (_values[index] < value)) index++;
+
+      //  base value
+      R = _Red[index];
+      G = _Green[index];
+      B = _Blue[index];
       //  calculate the interpolation factor
       //  OPTIMIZE USE PRECALCULATED DIVIDERS (costs 24 bytes extra RAM).
       float factor = (_values[index] - value) / (_values[index] - _values[index - 1]);
-      //  interpolate
-      R = _Red[index]   - factor * (_Red[index] - _Red[index - 1]);
-      G = _Green[index] - factor * (_Green[index] - _Green[index - 1]);
-      B = _Blue[index]  - factor * (_Blue[index] - _Blue[index - 1]);
+
+      //  interpolate if delta <> 0
+      int delta = _Red[index] - _Red[index - 1];
+      if (delta != 0 ) R -= factor * delta;
+
+      delta = _Green[index] - _Green[index - 1];
+      if (delta != 0 ) G -= factor * delta;
+
+      delta = _Blue[index] - _Blue[index - 1];
+      if (delta != 0 ) B -= factor * delta;
     }
     else
     {

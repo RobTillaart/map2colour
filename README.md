@@ -101,8 +101,10 @@ This number is hardcoded (now) and that might change
 
 ## Performance
 
-A small indicative table with some performance figures lib version 0.1.2) 
+measured with performance example.
 
+
+#### indicative performance figures lib version 0.1.2
 
 | function call          | time us UNO | time us ESP32 |
 |:-----------------------|------------:|--------------:|
@@ -112,7 +114,21 @@ A small indicative table with some performance figures lib version 0.1.2)
 | map2_565(value)        | 124 - 168   | 2 - 4         |
 
 
+#### indicative performance figures lib version 0.1.3
+
+| function call          | time us UNO | time us ESP32 |
+|:-----------------------|------------:|--------------:|
+| begin(values)          | 4           | 4             |
+| begin(values, colours) | 12          | 4             |
+| map2RGB(value)         | 64 - 132    | 2 - 3         |
+| map2_565(value)        | 68 - 140    | 2 - 3         |
+
+
 Note: UNO at 16 MHz, ESP32 at 240 MHz
+
+One optimization is replacing the float division in map2RGB by a multiplication. 
+This requires 24 bytes RAM and calculation of the dividers for the 6 intervals,
+which also implies more PROGMEM. (not implemented)
 
 
 ## Future
