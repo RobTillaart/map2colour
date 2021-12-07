@@ -32,7 +32,7 @@ New values will be linear interpolated between two points when needed.
 
 Assume you initialize a float array
 ```cpp
-float tempArray[] = { -10, -10, 5, 15, 30, 60, 125 };  // note the double -10
+float tempArray[] = { -20, -10, 5, 15, 30, 60, 125 };
 ```
 A temperature of 0°C will be mapped between the 2nd and 3rd element so
 between RED and YELLOW.
