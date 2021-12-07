@@ -126,31 +126,26 @@ measured with performance example.
 
 Note: UNO at 16 MHz, ESP32 at 240 MHz
 
-One optimization is replacing the float division in map2RGB by a multiplication. 
-This requires 24 bytes RAM and calculation of the dividers for the 6 intervals,
-which also implies more PROGMEM. (not implemented)
+
+#### optimization
+
+One performance optimization (trade memory for speed) is replacing the float division 
+in map2RGB by a multiplication. 
+This requires 24 bytes RAM to hold the 6 factors and calculation of the dividers in begin().
+The latter implies more PROGMEM. 
+To be implemented as a derived class?
 
 
 ## Future
 
 - update documentation
-- investigate ESP32 
-  - behaviour
-- seven "fixed" points is that flex enough?
-
-
-#### prio
-
-- optimize mapping 
-  - less compares
-  - replace division by multiply (cache 6 floats = 24 bytes RAM)
+- derived class optimization?
 
 
 #### development ?
 
 - **void adjustColour(uint8_t index, uint32_t RGB)**    // single colour adjust
 - **uint32_t dumpColourMap()** 
-
 - PROGMEM for default array?
 
 
