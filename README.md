@@ -128,10 +128,10 @@ Performance depends on colours chosen, platform etc.
 
 #### version 0.1.4
 
-| function call          | time us UNO | time us ESP32 |
-|:-----------------------|------------:|--------------:|
-| begin(values)          | 220         | 15            |
-| begin(values, colours) | 232         | 6             |
+| function call          | time us UNO | time us ESP32 | notes                 |
+|:-----------------------|------------:|--------------:|:----------------------|
+| begin(values)          | 244         | 15            | unexpected peak ESP32 |
+| begin(values, colours) | 256         | 6             |
 | map2RGB(value)         | 40 - 104    | 1 - 2         |
 | map2_565(value)        | 44 - 112    | 1 - 2         |
 
@@ -145,7 +145,10 @@ One performance optimization (trade memory for speed) is replacing the float div
 in map2RGB by a multiplication. 
 This requires 24 bytes RAM to hold the 6 factors and ~100 bytes of PROGMEM for the calculation of the dividers in begin(). 
 This optimization is implemented as a derived class **map2colourFast** in version 0.1.4.
-The map2RGB is about 40 % faster compared to the original 0.1.2.
+The **map2RGB()** call is about 40 % faster compared to the original 0.1.2.
+Although the **begin()** call is 250 us longer, it only takes a few mapping calls to break even.
+
+Note: the gain for the ESP32 is less pronounced, but can still be interesting.
 
 
 ## Future
