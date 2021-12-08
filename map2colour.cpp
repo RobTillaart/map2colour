@@ -13,7 +13,7 @@
 //                     add + improve examples.
 //                     fix value > upper bug
 //  0.1.3  2021-12-07  improve performance map2RGB
-//  0.1.4  2021-12-08  add derived class that uses more MEMORY / RAM
+//  0.1.4  2021-12-08  add derived class that is fast and uses more MEMORY / RAM
 //
 
 
@@ -125,7 +125,10 @@ bool map2colourFast::begin(float * values, uint32_t * colourMap)
   //  calculate dividers
   for (int index = 1; index < 7; index++)
   {
-    divFactor[index - 1] = 1.0 / (_values[index] - _values[index - 1]);
+    //  catch divide by zero and negative dividers. 
+    float den = _values[index] - _values[index - 1];
+    if (den <= 0.0) return false;
+    divFactor[index - 1] = 1.0 / den;
   }
   return true;
 }
