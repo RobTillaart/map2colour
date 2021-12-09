@@ -27,7 +27,6 @@ map2colour::map2colour()
 
 bool map2colour::begin(float * values, uint32_t * colourMap)
 {
-  _values = values;
   //  split colour map in channels
   if (colourMap != NULL)
   {
@@ -40,6 +39,13 @@ bool map2colour::begin(float * values, uint32_t * colourMap)
       val >>= 8;
       _Red[i]   = val & 0xFF;
     }
+  }
+  _values = values;
+  for (int index = 1; index < 7; index++)
+  {
+    //  catch non increasing values. 
+    float den = _values[index] - _values[index - 1];
+    if (den <= 0.0) return false;
   }
   return true;
 }
@@ -121,14 +127,14 @@ map2colourFast::map2colourFast() : map2colour()
 
 bool map2colourFast::begin(float * values, uint32_t * colourMap)
 {
-  map2colour::begin(values, colourMap);
+  if (map2colour::begin(values, colourMap) == false)
+  {
+    return false;  //  non increasing values.
+  }
   //  calculate dividers
   for (int index = 1; index < 7; index++)
   {
-    //  catch divide by zero and negative dividers. 
-    float den = _values[index] - _values[index - 1];
-    if (den <= 0.0) return false;
-    divFactor[index - 1] = 1.0 / den;
+    divFactor[index - 1] = 1.0 / (_values[index] - _values[index - 1]);
   }
   return true;
 }

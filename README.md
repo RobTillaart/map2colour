@@ -42,7 +42,10 @@ A temperature between 60°C and 125°C will be mapped between BLUE and WHITE.
 Adjusting the colour array allows one to use a "full spectrum" like the default or only 
 interpolate between two colours. Note the library has several colours predefined as constant
 to make the colour table (and the code) more readable. If colours are missing please make a 
-PullRequest (preferred) or file an issue. 
+PullRequest (preferred) or file an issue.
+
+**begin()** returns false if the array of values is not in increasing order, true otherwise.
+If returned false the code might behave in unexpected ways.
 
 
 ## Interface
@@ -53,6 +56,7 @@ PullRequest (preferred) or file an issue.
 boundary values and the associated array of **7** colours packed in uint32_t **0x00RRGGBB**.
 If the colour array is not given the last given (or the default) colour array is used.
 **begin()** can be called multiple times to change the mapping.
+The function returns false if the array of values 
 - **uint32_t map2RGB(float value)** returns RGB colour packed in an uint32_t **0x00RRGGBB**.  
 If the value is out of range of the original values array, the value is always mapped upon the first colour.
 - **uint16_t map2_565(float value)** often used 16 bit colour format. Currently a wrapper around **map2RGB**.
