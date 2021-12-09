@@ -56,7 +56,7 @@ If returned false the code might behave in unexpected ways.
 boundary values and the associated array of **7** colours packed in uint32_t **0x00RRGGBB**.
 If the colour array is not given the last given (or the default) colour array is used.
 **begin()** can be called multiple times to change the mapping.
-The function returns false if the array of values 
+The function returns false if the array of values is not in increasing order.
 - **uint32_t map2RGB(float value)** returns RGB colour packed in an uint32_t **0x00RRGGBB**.  
 If the value is out of range of the original values array, the value is always mapped upon the first colour.
 - **uint16_t map2_565(float value)** often used 16 bit colour format. Currently a wrapper around **map2RGB**.
@@ -68,7 +68,7 @@ The colour array can be filled with decimal or HEX values or predefined colours 
 
 ## Predefined colours
 
-Colours have the pattern **0x00RRGGBB**.
+Colours are represented as 24 bit RGB values and have the pattern **0x00RRGGBB**.
 
 
 | define      | value      |
@@ -91,7 +91,7 @@ Colours have the pattern **0x00RRGGBB**.
 | M2C_AQUA    | 0x0000FFFF |
 
 
-More colour definitions can be found e.g. https://www.w3.org/wiki/CSS/Properties/color/keywords
+More colour definitions can be found on the internet e.g. https://www.w3.org/wiki/CSS/Properties/color/keywords
 
 
 ## Operation
