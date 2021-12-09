@@ -12,6 +12,8 @@
 
 
 map2colour mc;
+// map2colourFast mc;
+
 
 // should be in increasing order; and 7 elements
 float values[7] = { 0, 32, 64, 128, 256, 512, 1024 };
