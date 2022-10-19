@@ -1,5 +1,5 @@
 //
-//    FILE: map2colour_map2_565.ino
+//    FILE: map2colour_compare_fast.ino
 //  AUTHOR: Rob Tillaart
 // PURPOSE: map2colour demo
 //     URL: https://github.com/RobTillaart/map2colour
@@ -10,8 +10,9 @@
 
 
 map2colour mc;
+map2colourFast mcf;
 
-//  should be in increasing order
+// should be in increasing order
 float values[7] = { 0, 32, 64, 128, 256, 512, 1024 };
 
 
@@ -23,29 +24,31 @@ void setup()
   Serial.println(MAP2COLOUR_LIB_VERSION);
   Serial.println();
 
-  //  load the values array
+  // load the values array
   mc.begin(values);
+  mcf.begin(values);
 
-  //  show the interpolating
-  for (float i = 0; i < 1024; i += 10)
+  // show the interpolating
+  for (float i = 0; i <= 1024; i++)
   {
-    uint16_t rgb = mc.map2_565(i);
+    uint32_t rgb1 = mc.map2RGB(i);
+    uint32_t rgb2 = mcf.map2RGB(i);
     Serial.print(i);
     Serial.print("\t");
-    Serial.println(rgb, HEX);
+    Serial.print(rgb1, HEX);
+    Serial.print("\t");
+    Serial.print(rgb2, HEX);
+    Serial.print("\t");
+    Serial.println((rgb1 == rgb2) ? "" : "<<<<");
   }
   Serial.println();
+  Serial.println("Done...");
 }
 
 
 void loop()
 {
-  int x = analogRead(0);          //  UNO returns between 0..1023; adapt if needed.
-  uint32_t rgb = mc.map2_565(x);
-  Serial.print(x);
-  Serial.print("\t");
-  Serial.println(rgb, HEX);
-  delay(100);
+
 }
 
 
