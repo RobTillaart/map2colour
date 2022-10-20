@@ -7,11 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [0.1.5] - 2022-10-19
+- redo **begin()** of map2colourFast to always create divFactors.
+- add compare example to compare map2colour and map2colourFast.
+- extent unit test with compare map2colour and map2colourFast.
 - update examples 
-- add compare example
 - add RP2040 in build-CI
 - add changelog.md
-- extent unit test with compare output of map2colour and map2colourFast.
+- fix keywords.txt
 
 ## [0.1.4] - 2021-12-08  
 - add derived class map2colourFast: faster + uses more MEMORY / RAM

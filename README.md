@@ -104,6 +104,21 @@ The minimum to implement is an intensity effect going from black towards a colou
 More complex colour schemes are possible, up to 7 different colours. 
 This number 7 is hardcoded (for now) and that might change in the future.
 
+#### Experimental in 0.1.5
+
+(was planned for 0.2.0)
+If you create a non-decreasing array of values one can create a break in the gradient. See example.
+
+```cpp
+float values[7] = { -200, -90, 0, 45,                                   45, 150, 180 };
+uint32_t colours[7] = { M2C_BLUE, M2C_AQUA, M2C_LIME, M2C_YELLOW,       M2C_RED, M2C_YELLOW, M2C_BLUE};
+```
+
+with the double 45 in the values array there would be no gradient between the **M2C_YELLOW** and **M2C_RED**
+effectively having 2 continuous gradients.
+
+Note: **begin()** will report such array as false.
+
 
 ## Performance
 
@@ -163,8 +178,10 @@ Note: the gain for the ESP32 is less pronounced, but can still be interesting.
 - update documentation
 
 #### should
-- move up the test for non-increase in **begin()** ==> fail fast.
-- look for more optimizations.
+- redo **begin()** of map2colour to allow all values. (0.2.0)
+  - non-decreasing array (already experimental in 0.1.5, will still return false! )
+  - any array of numbers.  (return value will always be true then)
+- look for optimizations.
   - cache last value?
 
 #### could
@@ -174,11 +191,13 @@ Note: the gain for the ESP32 is less pronounced, but can still be interesting.
   - faster than calling begin() again
 - map2RGB variant that gives a colour to the delta with previous value
   - user can do that fairly easy => example
+- map2HSL() as extra colour space.
 - add **reset()** for default array? (RAM)
 
 #### wont
 - **uint32_t dumpColourMap()** ==> not needed
 - PROGMEM for default array? ==> slower, AVR specific.
-
+- move up the test for non-increase in **begin()** ==> fail fast.
+  - conflicts with begin of fast version.
 
 

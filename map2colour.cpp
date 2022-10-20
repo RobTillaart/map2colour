@@ -118,16 +118,22 @@ map2colourFast::map2colourFast() : map2colour()
 
 bool map2colourFast::begin(float * values, uint32_t * colourMap)
 {
-  if (map2colour::begin(values, colourMap) == false)
-  {
-    return false;  //  non increasing values.
-  }
-  //  calculate dividers
+  //  load the colour-map and check non-decreasing order.
+  bool OK = map2colour::begin(values, colourMap);
+  //  pre-calculate dividers
   for (int index = 1; index < 7; index++)
   {
-    divFactor[index - 1] = 1.0 / (_values[index] - _values[index - 1]);
+    float divider = _values[index] - _values[index - 1];
+    if (divider > 0)
+    {
+      divFactor[index - 1] = 1.0 / divider;
+    }
+    else
+    {
+      divFactor[index - 1] = 0;
+    }
   }
-  return true;
+  return OK;
 }
 
 

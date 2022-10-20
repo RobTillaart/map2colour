@@ -28,7 +28,11 @@ void setup()
   mc.begin(values);
   mcf.begin(values);
 
-  // show the interpolating
+  Serial.println();
+  Serial.println();
+  Serial.println("map2RGB");
+
+  //  show the interpolating
   for (float i = 0; i <= 1024; i++)
   {
     uint32_t rgb1 = mc.map2RGB(i);
@@ -39,9 +43,28 @@ void setup()
     Serial.print("\t");
     Serial.print(rgb2, HEX);
     Serial.print("\t");
-    Serial.println((rgb1 == rgb2) ? "" : "<<<<");
+    Serial.println((rgb1 == rgb2) ? "" : "<<<<");  //  fails
   }
   Serial.println();
+  Serial.println();
+  Serial.println("map2_565");
+
+  //  show the interpolating
+  for (float i = 0; i <= 1024; i++)
+  {
+    uint16_t rgb1 = mc.map2_565(i);
+    uint16_t rgb2 = mcf.map2_565(i);
+    Serial.print(i);
+    Serial.print("\t");
+    Serial.print(rgb1, HEX);
+    Serial.print("\t");
+    Serial.print(rgb2, HEX);
+    Serial.print("\t");
+    Serial.println((rgb1 == rgb2) ? "" : "<<<<");  //  fails
+  }
+  Serial.println();
+  Serial.println();
+
   Serial.println("Done...");
 }
 

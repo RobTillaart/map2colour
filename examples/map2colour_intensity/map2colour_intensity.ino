@@ -7,6 +7,7 @@
 
 //  demo simulates a temperature mapped upon 1 colour intensity.
 //  low temperature = no colour, higher is more intense RED
+//      above 100 is just RED
 
 
 #include "Arduino.h"

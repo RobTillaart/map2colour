@@ -15,7 +15,7 @@ map2colour mc;
 // map2colourFast mc;
 
 
-// should be in increasing order; and 7 elements
+//  should be in increasing order; and 7 elements
 float values[7] = { 0, 32, 64, 128, 256, 512, 1024 };
 uint32_t colours[7] =
 {
@@ -37,7 +37,7 @@ void setup()
 
   Serial.println("begin()");
   delay(10);
-  // use the default colour map.
+  //  use the default colour map.
   start = micros();
   mc.begin(values);
   stop = micros();
@@ -45,7 +45,7 @@ void setup()
   delay(10);
 
 
-  // use the default colour map.
+  //  use the default colour map.
   start = micros();
   mc.begin(values, colours);
   stop = micros();

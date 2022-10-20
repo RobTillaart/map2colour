@@ -96,7 +96,7 @@ unittest(test_constants)
 
 
 
-unittest(test_compare)
+unittest(test_compare_RGB)
 {
   map2colour mc;
   map2colourFast mcf;
@@ -111,6 +111,32 @@ unittest(test_compare)
   {
     uint32_t rgb1 = mc.map2RGB(i);
     uint32_t rgb2 = mcf.map2RGB(i);
+    //  assertEqual(rgb1, rgb2);  // do not want 1024 output lines.
+    if (rgb1 != rgb2)
+    {
+      fprintf(stderr, "%d\n", i);
+      fails++;
+    }
+  }
+  assertEqual(0, fails);
+}
+
+
+unittest(test_compare_RGB565)
+{
+  map2colour mc;
+  map2colourFast mcf;
+
+  float values[7] = { 0, 32, 64, 128, 256, 512, 1024 };
+
+  mc.begin(values);
+  mcf.begin(values);
+  
+  int fails = 0;
+  for (float i = 0; i <= 1024; i++)
+  {
+    uint16_t rgb1 = mc.map2_565(i);
+    uint16_t rgb2 = mcf.map2_565(i);
     //  assertEqual(rgb1, rgb2);  // do not want 1024 output lines.
     if (rgb1 != rgb2)
     {
