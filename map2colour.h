@@ -31,6 +31,23 @@
 #define M2C_AQUA                        0x0000FFFF
 
 
+//  needed?
+//  #define M2C_GRAY_1                      0x00101010
+//  #define M2C_GRAY_2                      0x00202020
+//  #define M2C_GRAY_3                      0x00303030
+//  #define M2C_GRAY_4                      0x00404040
+//  #define M2C_GRAY_5                      0x00505050
+//  #define M2C_GRAY_6                      0x00606060
+//  #define M2C_GRAY_7                      0x00707070
+//  #define M2C_GRAY_8                      0x00808080
+//  #define M2C_GRAY_9                      0x00909090
+//  #define M2C_GRAY_10                     0x00A0A0A0
+//  #define M2C_GRAY_11                     0x00B0B0B0
+//  #define M2C_GRAY_12                     0x00C0C0C0
+//  #define M2C_GRAY_13                     0x00D0D0D0
+//  #define M2C_GRAY_14                     0x00E0E0E0
+
+
 class map2colour
 {
   public:
