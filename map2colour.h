@@ -2,15 +2,14 @@
 //
 //    FILE: map2colour.h
 //  AUTHOR: Rob Tillaart
-// VERSION: 0.1.5
+// VERSION: 0.1.6
 // PURPOSE: Arduino library for mapping a float to colour spectrum
 //     URL: https://github.com/RobTillaart/map2colour
-//
 
 
 #include "Arduino.h"
 
-#define MAP2COLOUR_LIB_VERSION          (F("0.1.5"))
+#define MAP2COLOUR_LIB_VERSION          (F("0.1.6"))
 
 
 //  https://www.w3.org/wiki/CSS/Properties/color/keywords
@@ -50,6 +49,7 @@ class map2colour
     uint8_t _Red[7]   = { 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0xFF };
     uint8_t _Green[7] = { 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0x00, 0xFF };
     uint8_t _Blue[7]  = { 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF };
+    //  uint8_t _Alpha[7] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
 };
 
 
@@ -72,5 +72,6 @@ class map2colourFast : public map2colour
     float divFactor[6];
 };
 
-// -- END OF FILE --
+
+//  -- END OF FILE --
 
