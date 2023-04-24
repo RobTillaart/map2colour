@@ -86,14 +86,14 @@ class map2colour
 class map2colourFast : public map2colour
 {
   public:
-    map2colourFast();
+    map2colourFast(uint8_t size = 7);
     //  values is an array of 7 values in ascending order
     bool begin(float * values, uint32_t * colourMap = NULL);
     uint32_t map2RGB(float value);
     uint16_t map2_565(float value);
 
   private:
-    float divFactor[6];
+    float * divFactor;
 };
 
 

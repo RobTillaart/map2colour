@@ -126,8 +126,9 @@ uint16_t map2colour::map2_565(float value)
 //
 //  DERIVED CLASS
 //
-map2colourFast::map2colourFast() : map2colour()
+map2colourFast::map2colourFast(uint8_t size) : map2colour(size)
 {
+  divFactor = (float *) malloc(size * sizeof(float));
 }
 
 
@@ -136,7 +137,7 @@ bool map2colourFast::begin(float * values, uint32_t * colourMap)
   //  load the colour-map and check non-decreasing order.
   bool OK = map2colour::begin(values, colourMap);
   //  pre-calculate dividers
-  for (int index = 1; index < 7; index++)
+  for (int index = 1; index < _size; index++)
   {
     float divider = _values[index] - _values[index - 1];
     if (divider > 0)
@@ -162,7 +163,7 @@ uint32_t map2colourFast::map2RGB(float value)
 
   if (_values[0] < value)
   {
-    if (value < _values[6] )
+    if (value < _values[_size-1] )
     {
       //  search the interval
       while (_values[index] < value) index++;
@@ -187,9 +188,9 @@ uint32_t map2colourFast::map2RGB(float value)
     else
     {
       //  out of upper range
-      R = _Red[6];
-      G = _Green[6];
-      B = _Blue[6];
+      R = _Red[_size-1];
+      G = _Green[_size-1];
+      B = _Blue[_size-1];
     }
   }
   uint32_t colour = R;
