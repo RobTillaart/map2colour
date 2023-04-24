@@ -55,7 +55,7 @@ class map2colour
 
     //  values is an array of size values in ascending order
     bool     begin(float * values, uint32_t * colourMap = NULL);
-    uint8_t  size():
+    uint8_t  size();
     uint32_t map2RGB(float value);
     uint16_t map2_565(float value);
 

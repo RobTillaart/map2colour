@@ -14,9 +14,9 @@ map2colour::map2colour(uint8_t size)
 {
   _size = size;
   if (_size < M2C_MIN_SIZE) _size = M2C_MIN_SIZE;
-  _Red   = malloc(_size);
-  _Green = malloc(_size);
-  _Blue  = malloc(_size);
+  _Red   = (uint8_t *)malloc(_size);
+  _Green = (uint8_t *)malloc(_size);
+  _Blue  = (uint8_t *)malloc(_size);
 }
 
 
