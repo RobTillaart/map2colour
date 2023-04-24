@@ -140,7 +140,7 @@ map2colourFast::map2colourFast(uint8_t size) : map2colour(size)
 }
 
 
-map2colour::~map2colourFast() : map2colourFast()
+map2colourFast::~map2colourFast() : map2colour()
 {
   if (divFactor) free(divFactor);
 }
