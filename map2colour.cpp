@@ -14,23 +14,33 @@ map2colour::map2colour(uint8_t size)
 {
   _size = size;
   if (_size < M2C_MIN_SIZE) _size = M2C_MIN_SIZE;
+
   _Red   = (uint8_t *)malloc(_size);
   _Green = (uint8_t *)malloc(_size);
   _Blue  = (uint8_t *)malloc(_size);
+
+  // for backwards compatibility
+  uint8_t r[7] = { 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0xFF };
+  uint8_t g[7] = { 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0x00, 0xFF };
+  uint8_t b[7] = { 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF };
+
+  memcpy(_Red,   r, 7);
+  memcpy(_Green, g, 7);
+  memcpy(_Blue,  b, 7);
 }
 
 
 map2colour::~map2colour()
 {
-  if (_Red) free(_Red);
+  if (_Red)   free(_Red);
   if (_Green) free(_Green);
-  if (_Blue) free(_Blue);
+  if (_Blue)  free(_Blue);
 }
 
 
 bool map2colour::begin(float * values, uint32_t * colourMap)
 {
-  if ((_Red == NULL) || (_Green == NULL) || (_Blue == NULL)) 
+  if ((_Red == NULL) || (_Green == NULL) || (_Blue == NULL))
   {
     //  need error codes?
     return false;

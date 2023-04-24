@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - add destructor.
 - add **uint8_t size()**
 - add **m2c_colours.h** for colour constants
-- add M2C_GRAY constants
+- add **M2C_GRAY** constants
 - update readme.md
 - minor edits
 
