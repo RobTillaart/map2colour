@@ -7,8 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [0.2.0] - 2023-04-24
-- add dynamic size arrays
-
+- add dynamic size in constructor (minimum 7 for backwards)
+- add destructor.
+- add **uint8_t size()**
+- add **m2c_colours.h** for colour constants
+- add M2C_GRAY constants
+- update readme.md
+- minor edits
 
 ----
 

@@ -20,6 +20,14 @@ map2colour::map2colour(uint8_t size)
 }
 
 
+map2colour::~map2colour()
+{
+  if (_Red) free(_Red);
+  if (_Green) free(_Green);
+  if (_Blue) free(_Blue);
+}
+
+
 bool map2colour::begin(float * values, uint32_t * colourMap)
 {
   if ((_Red == NULL) || (_Green == NULL) || (_Blue == NULL)) 
@@ -130,6 +138,13 @@ map2colourFast::map2colourFast(uint8_t size) : map2colour(size)
 {
   divFactor = (float *) malloc(size * sizeof(float));
 }
+
+
+map2colour::~map2colourFast() : map2colourFast()
+{
+  if (divFactor) free(divFactor);
+}
+
 
 
 bool map2colourFast::begin(float * values, uint32_t * colourMap)
