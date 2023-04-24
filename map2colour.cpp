@@ -61,9 +61,8 @@ bool map2colour::begin(float * values, uint32_t * colourMap)
   _values = values;
   for (int index = 1; index < _size; index++)
   {
-    //  catch non increasing values.
     float den = _values[index] - _values[index - 1];
-    if (den <= 0.0) return false;
+    if (den < 0.0) return false;
   }
   return true;
 }
