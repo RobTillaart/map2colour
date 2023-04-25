@@ -1,5 +1,5 @@
 //
-//    FILE: map2colour_demo01.ino
+//    FILE: map2colour_dynamic.ino
 //  AUTHOR: Rob Tillaart
 // PURPOSE: map2colour demo
 //     URL: https://github.com/RobTillaart/map2colour

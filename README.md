@@ -101,7 +101,7 @@ These are defined in **m2c_colours.h**
 |  M2C_PURPLE   |  0x00800080  |  M2C_TEAL    |  0x00008080  |
 |  M2C_FUCHSIA  |  0x00FF00FF  |  M2C_AQUA    |  0x0000FFFF  |
 
-Besides these colours, the file contains aLSO GRAY-scale VALUES M2C_GRAY_0 .. M2C_GRAY_16.
+Besides these colours, the file contains also GRAY-scale VALUES M2C_GRAY_0 .. M2C_GRAY_16.
 
 More colour definitions can be found on the internet 
 e.g. https://www.w3.org/wiki/CSS/Properties/color/keywords
