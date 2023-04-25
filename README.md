@@ -182,6 +182,8 @@ Note: UNO at 16 MHz, ESP32 at 240 MHz
 
 #### version 0.1.4
 
+map2colourFast.
+
 |  function call           |  time UNO   |  time ESP32  |  notes                  |
 |:-------------------------|------------:|-------------:|:------------------------|
 |  begin(values)           |   284       |   15         |  unexpected peak ESP32  |
@@ -204,6 +206,18 @@ Although the **begin()** call is ~300 us longer, it only takes a dozen **map2RGB
 Note: the gain for the ESP32 is less pronounced, but can still be interesting.
 
 
+#### version 0.2.0
+
+map2colourFast, slightly slower compared to 0.1.4
+
+|  function call           |  time UNO   |  time ESP32  |
+|:-------------------------|------------:|-------------:|
+|  begin(values)           |   316       |    22        |
+|  begin(values, colours)  |   332       |    7         |
+|  map2RGB(value)          |   48 - 116  |    1 - 2     |
+|  map2_565(value)         |   52 - 120  |    1 - 2     |
+
+
 ## Future
 
 #### Must
@@ -214,24 +228,15 @@ Note: the gain for the ESP32 is less pronounced, but can still be interesting.
 
 - look for optimizations.
   - cache last value?
-- improve the constructor
-  - add **splitColorMap()**
-- **bool adjustColour(uint8_t index, uint32_t RGB)**    
-  - single colour adjustment
-  - returns false if index out of range.
-  - faster than calling **begin()**.
-  - divfactors need to be calculated again?
 
 
 #### Could
 
-- map2RGB variant that gives a colour as the delta with the previous value.
-  - user can do that fairly easy => example
-- add 3rd param size to **begin()** to allow smaller arrays??
-  - suppose you allocate size = 20 and want to use only 5 entries.
-- create a memory efficient version that just keeps a pointer to the colour array.
+- create a memory efficient version 
+  - keep a pointer to the colour array.
   - split RGB channels for every mapping.
-  - is this useful?
+  - is this useful? only for smallest RAM devices.
+- remove default array and break backwards compatibility.
 
 
 #### Wont
@@ -241,12 +246,27 @@ Note: the gain for the ESP32 is less pronounced, but can still be interesting.
 - move up the test for non-increase in **begin()** ==> fail fast.
   - conflicts with begin of fast version.
   - user responsibility.
-- should a 4th (alpha) channel be enabled?
+- could a 4th (alpha) channel be enabled?
   - not needed yet, would need new constants
 - faster 16 bit 565 version?
   - only on request as a separate class map2colour565.
 - map2HSL() as extra colour space.
-  - not seen much HSL displays in "arduino" world
+  - not seen much HSL displays in "Arduino" world
+  - separate converter solves this.
 - add **reset()** for default array? 
   - takes too much RAM.
+- improve the constructor
+  - add **splitColorMap()**
+  - only done once so too little gain.
+- map2RGB variant that gives a colour as the delta with the previous value.
+  - user can do that fairly easy => example
+- add 3rd param size to **begin()** to allow smaller arrays?
+  - suppose you allocate size = 20 and want to use only 5 entries.
+  - create a new object.
+- **bool adjustColour(uint8_t index, uint32_t RGB)**    
+  - single colour adjustment
+  - returns false if index out of range.
+  - faster than calling **begin()**.
+  - divfactors need to be calculated again?
+  - see no real use case.
 
