@@ -8,21 +8,21 @@
 
 # map2colour
 
-Arduino library for mapping a float to colour spectrum.
+Arduino library for mapping a float to a colour spectrum.
 
 
 ## Description
 
 The map2colour library is used to map a float value to a colour in the RGB spectrum.
-The float value can come from a calculation or read from a sensor, 
-e.g. temperature, humidity, light, distance or pressure. 
+The float value can be the result of a calculation or read from a sensor, 
+e.g. temperature, humidity, light, distance, direction or pressure. 
 
 This function can be used to colour an element on a graphical display,
-drive an RGB LED, or even a LED string etc to indicate some sort of state visually.
+drive an RGB LED, or a LED string etc to indicate some sort of state visually.
 
-The first release used a fixed number of 7 floats values that describe the range being mapped.
+The first releases used a fixed number of 7 floats values that describe the range being mapped.
 With version 0.2.0 one can define the size as a parameter of the constructor.
-There is no limit in theory, but in practice there is, 32 entries is a lot.
+There is no limit (except RAM) in theory, but in practice 16 or 32 entries is a lot.
 
 A lookup array of float values is passed to the library with **begin()**.
 These floats must be in **non-decreasing** order and are mapped default on the following colour array.
@@ -56,6 +56,8 @@ If colours are missing please make a PullRequest (preferred) or file an issue.
 
 **begin()** returns true if the array of values is in non-decreasing order, false otherwise.
 If returned false the code might behave in unexpected ways.
+
+Please note that the colourMap can have duplicate entries even side by side.
 
 
 ## Interface
@@ -130,6 +132,16 @@ float values[7] =     { -200,      200,       200, 200, 200, 200, 200, };
 uint32_t colours[7] = { M2C_BLACK, M2C_RED,   0, 0, 0, 0, 0};
 ```
 
+Note that the above colour scheme maps all colokrs above 200 to BLACK (0).
+
+Another interesting colour scheme could be a symmetric one.
+This could indicate 25 as an optimal value (GREEN).
+
+```cpp
+float values[5] =     { -50,        -25,     0,          25,        50,        75,      100};
+uint32_t colours[5] = { M2C_BLACK, M2C_RED, M2C_YELLOW, M2C_GREEN, M2C_YELLOW, M2C_RED, M2C_BLACK};
+```
+
 More complex colour schemes are possible, up to **size** different colours.
 
 
@@ -146,6 +158,9 @@ uint32_t colours[7] = { M2C_BLUE, M2C_AQUA, M2C_LIME, M2C_YELLOW,       M2C_RED,
 
 With **45** occurring twice in the values array above there would be no interpolation or colour gradient 
 between the **M2C_YELLOW** and **M2C_RED** effectively resulting in 2 continuous gradients.
+
+A slightly less hard edge could be made by changing the second 45 to 46 or 47, 
+so there is a small area with a very steep gradient. 
 
 Note: Since 0.2.0 **begin()** will accept a non-decreasing value array and return true.
 This was false in 0.1.5.
@@ -208,7 +223,8 @@ Note: the gain for the ESP32 is less pronounced, but can still be interesting.
 
 #### version 0.2.0
 
-map2colourFast, slightly slower compared to 0.1.4
+map2colourFast, slightly slower compared to 0.1.4.
+Note that the larger the size the more time it takes to find the correct interval for the value.
 
 |  function call           |  time UNO   |  time ESP32  |
 |:-------------------------|------------:|-------------:|

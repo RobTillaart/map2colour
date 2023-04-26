@@ -3,13 +3,15 @@
 //  AUTHOR: Rob Tillaart
 // PURPOSE: demo
 //     URL: https://github.com/RobTillaart/map2colour
+//          https://github.com/RobTillaart/map2colour/issues/9
 
 #include "Arduino.h"
 #include "map2colour.h"
 
 map2colour mc(13);
 
-float windys_values[13] = { -94,-67,-40,-13,5,17,25,32,34,50,70,86,116};
+// float windys_values[] = { -70, -55, -40, -25, -15, -8.33, -3.89, 0, 1, 10, 21, 30, 45};  //  Celsius
+float windys_values[13] = { -94,-67,-40,-13,5,17,25,32,34,50,70,86,116};  //  Fahrenheit.
 uint32_t windys_colour[13] =
 {
   0x734669, 0xcaacc3, 0xa24691, 0x8f59a9, 0x9ddbd9, 0x6abfb5, 0x64a6bd, 
